@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Party Show Page</title>
+</head>
+<body>
+  <main th:object="${party}">
+    <h2 th:text="*{name}"></h2>
+    <p th:text="*{description}"></p>
+    <p th:text="'Location: ' + *{location.getName()}"></p>
+    <p th:text="'Cost: ' + *{location.displayPrice()}"></p>
+  </main>
+</body>
+</html>
