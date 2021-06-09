@@ -1,5 +1,6 @@
 package com.launchacademy.partyplanner.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.launchacademy.partyplanner.services.LocationService;
 import java.util.Optional;
 import javax.persistence.Column;
@@ -41,6 +42,7 @@ public class Party {
 
   @ManyToOne
   @JoinColumn(name = "location_id", nullable = false)
+  @JsonIgnoreProperties("parties")
   private Location location;
 
   public void setLocation(Location location) {

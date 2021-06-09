@@ -1,5 +1,6 @@
 package com.launchacademy.partyplanner.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -47,6 +48,7 @@ public class Location {
   private double rentalPrice;
 
   @OneToMany(mappedBy = "location")
+  @JsonIgnoreProperties("location")
   private List<Party> parties = new ArrayList<>();
 
   public String displayPrice() {
