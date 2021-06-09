@@ -3,11 +3,11 @@ package com.launchacademy.partyplanner.seeders;
 import com.launchacademy.partyplanner.models.Location;
 import com.launchacademy.partyplanner.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LocationSeeder implements CommandLineRunner {
+public class LocationSeeder {
+
   private LocationService locationService;
 
   @Autowired
@@ -15,8 +15,7 @@ public class LocationSeeder implements CommandLineRunner {
     this.locationService = locationService;
   }
 
-  @Override
-  public void run(String... args) throws Exception {
+  public void seed() {
     if(locationService.findAll().size() == 0) {
       Location location1 = new Location();
       location1.setName("The Old Spaghetti Factory");

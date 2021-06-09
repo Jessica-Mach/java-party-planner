@@ -1,25 +1,26 @@
 package com.launchacademy.partyplanner.models;
 
-import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "locations")
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name = "locations")
 public class Location {
   @Id
   @SequenceGenerator(name="location_generator", sequenceName="locations_id_seq", allocationSize = 1)
@@ -45,8 +46,10 @@ public class Location {
   @Column(name = "rental_price", columnDefinition = "numeric")
   private double rentalPrice;
 
+  @OneToMany(mappedBy = "location")
+  private List<Party> parties = new ArrayList<>();
+
   public String displayPrice() {
-    DecimalFormat formatter = new DecimalFormat();
     return rentalPrice > 0 ? "$" + String.format("%.2f", rentalPrice) : "free";
   }
 }
