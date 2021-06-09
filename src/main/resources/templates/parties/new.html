@@ -21,7 +21,7 @@
     <label for="location">Choose Location</label>
     <select id="location" th:field="*{location}">
       <option th:each="partyLocation : ${locations}"
-          th:value="${partyLocation}"
+          th:value="${partyLocation.id}"
           th:text="${partyLocation.name}"></option>
     </select>
     <p th:errors="*{location}"></p>

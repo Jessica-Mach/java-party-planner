@@ -30,12 +30,6 @@ public class PartiesController {
     this.partiesService = partiesService;
   }
 
-  @GetMapping
-  public String getPartiesList() {
-    // ADD GET PARTIES
-    return "parties/index";
-  }
-
   @GetMapping("/new")
   public String getNewPartyForm(@ModelAttribute Party party, Model model) {
     model.addAttribute("locations", locationService.findAll());

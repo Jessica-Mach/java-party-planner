@@ -1,7 +1,9 @@
 package com.launchacademy.partyplanner.controllers;
 
 import com.launchacademy.partyplanner.models.Location;
+import com.launchacademy.partyplanner.models.Party;
 import com.launchacademy.partyplanner.services.LocationService;
+import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +23,12 @@ import org.springframework.web.server.ResponseStatusException;
 public class LocationController {
 
   private LocationService locationService;
+  private PartiesController partiesController;
 
   @Autowired
-  public LocationController(LocationService locationService) {
+  public LocationController(LocationService locationService, PartiesController partiesController) {
     this.locationService = locationService;
+    this.partiesController = partiesController;
   }
 
   @GetMapping
@@ -41,6 +45,10 @@ public class LocationController {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     } else {
       model.addAttribute("location", showLocation.get());
+      List<Party> parties = showLocation.get().getParties();
+      if(parties.size() > 0) {
+        model.addAttribute("parties", parties);
+      }
     }
     return "locations/show";
   }

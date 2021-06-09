@@ -1,5 +1,7 @@
 package com.launchacademy.partyplanner.models;
 
+import com.launchacademy.partyplanner.services.LocationService;
+import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,4 +46,5 @@ public class Party {
   public void setLocation(Location location) {
     this.location = location;
   }
+
 }

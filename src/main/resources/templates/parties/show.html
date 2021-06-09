@@ -8,8 +8,7 @@
   <main th:object="${party}">
     <h2 th:text="*{name}"></h2>
     <p th:text="*{description}"></p>
-    <p th:text="'Location: ' + *{location.getName()}"></p>
-    <p th:text="'Cost: ' + *{location.displayPrice()}"></p>
+    <p th:text="'Location: ' + *{location.getName()} + ' (' + *{location.displayPrice()} + ')'"></p>
   </main>
 </body>
 </html>
