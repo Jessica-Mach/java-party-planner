@@ -1,5 +1,6 @@
 package com.launchacademy.partyplanner.models;
 
+import java.text.DecimalFormat;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,6 +46,7 @@ public class Location {
   private double rentalPrice;
 
   public String displayPrice() {
-    return rentalPrice > 0 ? "$" + rentalPrice : "free";
+    DecimalFormat formatter = new DecimalFormat();
+    return rentalPrice > 0 ? "$" + String.format("%.2f", rentalPrice) : "free";
   }
 }

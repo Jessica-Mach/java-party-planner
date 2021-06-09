@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show Location</title>
+</head>
+<body>
+  <main th:object="${location}">
+    <h2 th:text="*{name}"></h2>
+    <p th:text="*{city} + ', ' + *{state}"></p>
+    <p th:text="'Cost: ' + ${location.displayPrice()}"></p>
+  </main>
+</body>
+</html>

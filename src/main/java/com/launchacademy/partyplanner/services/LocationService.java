@@ -2,8 +2,8 @@ package com.launchacademy.partyplanner.services;
 
 import com.launchacademy.partyplanner.models.Location;
 import com.launchacademy.partyplanner.repositories.LocationRepository;
-import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +22,9 @@ public class LocationService {
 
   public void save(Location location) {
     locationRepository.save(location);
+  }
+
+  public Optional<Location> findById(Integer id) {
+    return locationRepository.findById(id);
   }
 }
